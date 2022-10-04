@@ -1,0 +1,46 @@
+mysql> use arj;
+Database changed
+mysql> drop table table1;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> use arj;
+Database changed
+mysql> create table table1(NAME varchar(25),ID int(12),age int ,salary int,address char(20));
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+mysql> desc table1;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| NAME    | varchar(25) | YES  |     | NULL    |       |
+| ID      | int         | YES  |     | NULL    |       |
+| age     | int         | YES  |     | NULL    |       |
+| salary  | int         | YES  |     | NULL    |       |
+| address | char(20)    | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> insert into table1 (NAME ,ID,age,salary,address)
+    -> values ("ruben","192110521","19","1000000","dwp");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select *from table1;
++-------+-----------+------+---------+---------+
+| NAME  | ID        | age  | salary  | address |
++-------+-----------+------+---------+---------+
+| ruben | 192110521 |   19 | 1000000 | dwp     |
++-------+-----------+------+---------+---------+
+1 row in set (0.00 sec)
+
+mysql> insert into table1 (NAME ,ID,age,salary,address)
+    -> values("suraj","192110523","20","100000","TN");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select*from table1;
++-------+-----------+------+---------+---------+
+| NAME  | ID        | age  | salary  | address |
++-------+-----------+------+---------+---------+
+| ruben | 192110521 |   19 | 1000000 | dwp     |
+| suraj | 192110523 |   20 |  100000 | TN      |
++-------+-----------+------+---------+---------+
+2 rows in set (0.00 sec)

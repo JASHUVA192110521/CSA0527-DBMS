@@ -1,0 +1,48 @@
+mysql> select *from table1;
++-------+------+------+--------+
+| NAME  | ID   | age  | salary |
++-------+------+------+--------+
+| ruben |  521 |   19 |    500 |
+| ruben |  521 |   19 |    400 |
+| josh  |  511 |   20 |    300 |
+| rocky |  111 |   18 |    300 |
+| rocky |  111 |   18 |   NULL |
++-------+------+------+--------+
+5 rows in set (0.00 sec)
+mysql> select NAME,ID,age,salary
+    -> from table1
+    -> ORDER by NAME;
++-------+------+------+--------+
+| NAME  | ID   | age  | salary |
++-------+------+------+--------+
+| josh  |  511 |   20 |    300 |
+| rocky |  111 |   18 |    300 |
+| rocky |  111 |   18 |   NULL |
+| ruben |  521 |   19 |    500 |
+| ruben |  521 |   19 |    400 |
++-------+------+------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select NAME,ID,age,salary
+    -> from table1
+    -> HAVING  age>18;
++-------+------+------+--------+
+| NAME  | ID   | age  | salary |
++-------+------+------+--------+
+| ruben |  521 |   19 |    500 |
+| ruben |  521 |   19 |    400 |
+| josh  |  511 |   20 |    300 |
++-------+------+------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select NAME,ID,age,salary
+    -> from table1
+    -> group by NAME;
++-------+------+------+--------+
+| NAME  | ID   | age  | salary |
++-------+------+------+--------+
+| ruben |  521 |   19 |    500 |
+| josh  |  511 |   20 |    300 |
+| rocky |  111 |   18 |    300 |
++-------+------+------+--------+
+3 rows in set (0.00 sec)

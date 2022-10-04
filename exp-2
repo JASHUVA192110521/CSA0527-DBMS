@@ -1,0 +1,16 @@
+mysql> use arj;
+Database changed
+mysql> create table table1(name char ,age int ,id int primary key,salary int unique,gender char, check(gender="m"or"f"));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc table1;
++--------+---------+------+-----+---------+-------+
+| Field  | Type    | Null | Key | Default | Extra |
++--------+---------+------+-----+---------+-------+
+| name   | char(1) | YES  |     | NULL    |       |
+| age    | int     | YES  |     | NULL    |       |
+| id     | int     | NO   | PRI | NULL    |       |
+| salary | int     | YES  | UNI | NULL    |       |
+| gender | char(1) | YES  |     | NULL    |       |
++--------+---------+------+-----+---------+-------+
+5 rows in set (0.00 sec)

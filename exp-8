@@ -1,0 +1,38 @@
+
+mysql> use arj;
+Database changed
+mysql> select* from table1;
++-------+------+------+--------+
+| NAME  | ID   | age  | salary |
++-------+------+------+--------+
+| ruben |  521 |   19 |    500 |
+| ruben |  521 |   19 |    400 |
+| josh  |  511 |   20 |    300 |
+| rocky |  111 |   18 |    300 |
+| rocky |  111 |   18 |   NULL |
++-------+------+------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select NAME,ID,age from table1 where age in (select age from table1 where group by NAME);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'group by NAME)' at line 1
+mysql> select NAME,ID,age from table1 where age in (select age from table1 group by NAME);
++-------+------+------+
+| NAME  | ID   | age  |
++-------+------+------+
+| ruben |  521 |   19 |
+| ruben |  521 |   19 |
+| josh  |  511 |   20 |
+| rocky |  111 |   18 |
+| rocky |  111 |   18 |
++-------+------+------+
+5 rows in set (0.00 sec)
+
+mysql> select NAME,ID,age from table1 where age in (select age from table1 where age>18);
++-------+------+------+
+| NAME  | ID   | age  |
++-------+------+------+
+| ruben |  521 |   19 |
+| ruben |  521 |   19 |
+| josh  |  511 |   20 |
++-------+------+------+
+3 rows in set (0.00 sec)

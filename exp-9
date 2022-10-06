@@ -1,0 +1,65 @@
+mysql> select emp.name,emp.id,emp.salary ,emp_add.city from emp  join emp_add on emp.id=emp_add.id;
++--------+-----+--------+------+
+| name   | id  | salary | city |
++--------+-----+--------+------+
+| rajesh | 133 |    500 | hyd  |
+| ram    | 143 |   1500 | tn   |
+| ramu   | 162 |    600 | py   |
+| ravi   | 192 |   1000 | ap   |
++--------+-----+--------+------+
+4 rows in set (0.00 sec)
+
+mysql> select emp.name,emp.id,emp.salary ,emp_add.city from emp left join emp_add on emp.id=emp_add.id;
++--------+-----+--------+------+
+| name   | id  | salary | city |
++--------+-----+--------+------+
+| rajesh | 133 |    500 | hyd  |
+| ram    | 143 |   1500 | tn   |
+| ramu   | 162 |    600 | py   |
+| ravi   | 192 |   1000 | ap   |
++--------+-----+--------+------+
+4 rows in set (0.00 sec)
+
+mysql> select emp.name,emp.id,emp.salary ,emp_add.city from emp right join emp_add on emp.id=emp_add.id;
++--------+------+--------+------+
+| name   | id   | salary | city |
++--------+------+--------+------+
+| rajesh |  133 |    500 | hyd  |
+| ram    |  143 |   1500 | tn   |
+| ramu   |  162 |    600 | py   |
+| NULL   | NULL |   NULL | jk   |
+| ravi   |  192 |   1000 | ap   |
+| NULL   | NULL |   NULL | ap   |
++--------+------+--------+------+
+6 rows in set (0.00 sec)
+
+mysql> select* from emp cross join emp_add;
++--------+-----+--------+-----+------+
+| name   | id  | salary | id  | city |
++--------+-----+--------+-----+------+
+| ravi   | 192 |   1000 | 133 | hyd  |
+| ramu   | 162 |    600 | 133 | hyd  |
+| ram    | 143 |   1500 | 133 | hyd  |
+| rajesh | 133 |    500 | 133 | hyd  |
+| ravi   | 192 |   1000 | 143 | tn   |
+| ramu   | 162 |    600 | 143 | tn   |
+| ram    | 143 |   1500 | 143 | tn   |
+| rajesh | 133 |    500 | 143 | tn   |
+| ravi   | 192 |   1000 | 162 | py   |
+| ramu   | 162 |    600 | 162 | py   |
+| ram    | 143 |   1500 | 162 | py   |
+| rajesh | 133 |    500 | 162 | py   |
+| ravi   | 192 |   1000 | 163 | jk   |
+| ramu   | 162 |    600 | 163 | jk   |
+| ram    | 143 |   1500 | 163 | jk   |
+| rajesh | 133 |    500 | 163 | jk   |
+| ravi   | 192 |   1000 | 192 | ap   |
+| ramu   | 162 |    600 | 192 | ap   |
+| ram    | 143 |   1500 | 192 | ap   |
+| rajesh | 133 |    500 | 192 | ap   |
+| ravi   | 192 |   1000 | 199 | ap   |
+| ramu   | 162 |    600 | 199 | ap   |
+| ram    | 143 |   1500 | 199 | ap   |
+| rajesh | 133 |    500 | 199 | ap   |
++--------+-----+--------+-----+------+
+24 rows in set (0.00 sec)

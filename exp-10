@@ -1,0 +1,83 @@
+mysql> use arj;
+Database changed
+mysql> select*from emp;
++--------+-----+--------+
+| name   | id  | salary |
++--------+-----+--------+
+| rajesh | 133 |    500 |
+| ram    | 143 |   1500 |
+| ramu   | 162 |    600 |
+| ravi   | 192 |   1000 |
++--------+-----+--------+
+4 rows in set (0.00 sec)
+
+mysql> select *from eligible;
++-------+------+
+| NAME  | ID   |
++-------+------+
+| ruben |  521 |
+| ruben |  521 |
+| josh  |  511 |
++-------+------+
+3 rows in set (0.00 sec)mysql> create view higher_salary as select name ,id,salary from emp where salary>500;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select *from higher_salary;
++------+-----+--------+
+| name | id  | salary |
++------+-----+--------+
+| ram  | 143 |   1500 |
+| ramu | 162 |    600 |
+| ravi | 192 |   1000 |
++------+-----+--------+
+3 rows in set (0.00 sec)
+mysql> create index f on table1(name);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> drop index f on table1;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select *from table1;
++-------+------+------+--------+
+| NAME  | ID   | age  | salary |
++-------+------+------+--------+
+| ruben |  521 |   19 |    500 |
+| ruben |  521 |   19 |    400 |
+| josh  |  511 |   20 |    300 |
+| rocky |  111 |   18 |    300 |
+| rocky |  111 |   18 |   NULL |
++-------+------+------+--------+
+5 rows in set (0.00 sec)mysql> alter table table1 drop index f;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select *from table1;
++-------+------+------+--------+
+| NAME  | ID   | age  | salary |
++-------+------+------+--------+
+| ruben |  521 |   19 |    500 |
+| ruben |  521 |   19 |    400 |
+| josh  |  511 |   20 |    300 |
+| rocky |  111 |   18 |    300 |
+| rocky |  111 |   18 |   NULL |
++-------+------+------+--------+
+5 rows in set (0.00 sec)
+mysql> create table table2(name varchar(20),roll int auto_increment primary key);
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select *from table2;;
+Empty set (0.00 sec)
+
+ERROR:
+No query specified
+
+mysql> insert into table2 values("sunny","20");
+Query OK, 1 row affected (0.00 sec)mysql> select *from table2;
++-------+------+
+| name  | roll |
++-------+------+
+| sunny |   20 |
++-------+------+
+1 row in set (0.00 sec)

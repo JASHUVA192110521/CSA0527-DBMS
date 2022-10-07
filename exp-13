@@ -1,0 +1,155 @@
+mysql> select *from ply;
++--------+------+------+
+| name   | roll | age  |
++--------+------+------+
+| geetha |    7 |   23 |
++--------+------+------+
+1 row in set (0.00 sec)
+
+mysql> insert into ply values ("raj",4,20);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into ply values ("rama",5,24);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select *from ply;
++--------+------+------+
+| name   | roll | age  |
++--------+------+------+
+| raj    |    4 |   20 |
+| rama   |    5 |   24 |
+| geetha |    7 |   23 |
++--------+------+------+
+3 rows in set (0.00 sec)
+
+mysql> set autocommit=0;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select *from ply;
++--------+------+------+
+| name   | roll | age  |
++--------+------+------+
+| raj    |    4 |   20 |
+| rama   |    5 |   24 |
+| geetha |    7 |   23 |
++--------+------+------+
+3 rows in set (0.00 sec)
+
+mysql> delete from ply where roll=4;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select *from ply;
++--------+------+------+
+| name   | roll | age  |
++--------+------+------+
+| rama   |    5 |   24 |
+| geetha |    7 |   23 |
++--------+------+------+
+2 rows in set (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select *from ply;
++--------+------+------+
+| name   | roll | age  |
++--------+------+------+
+| raj    |    4 |   20 |
+| rama   |    5 |   24 |
+| geetha |    7 |   23 |
++--------+------+------+
+3 rows in set (0.00 sec)
+mysql> select *from ply;
++--------+------+------+
+| name   | roll | age  |
++--------+------+------+
+| geetha |    7 |   23 |
++--------+------+------+
+1 row in set (0.00 sec)
+
+mysql> insert into ply values ("raj",4,20);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into ply values ("rama",5,24);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select *from ply;
++--------+------+------+
+| name   | roll | age  |
++--------+------+------+
+| raj    |    4 |   20 |
+| rama   |    5 |   24 |
+| geetha |    7 |   23 |
++--------+------+------+
+3 rows in set (0.00 sec)
+
+mysql> set autocommit=0;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select *from ply;
++--------+------+------+
+| name   | roll | age  |
++--------+------+------+
+| raj    |    4 |   20 |
+| rama   |    5 |   24 |
+| geetha |    7 |   23 |
++--------+------+------+
+3 rows in set (0.00 sec)
+
+mysql> delete from ply where roll=4;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select *from ply;
++--------+------+------+
+| name   | roll | age  |
++--------+------+------+
+| rama   |    5 |   24 |
+| geetha |    7 |   23 |
++--------+------+------+
+2 rows in set (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select *from ply;
++--------+------+------+
+| name   | roll | age  |
++--------+------+------+
+| raj    |    4 |   20 |
+| rama   |    5 |   24 |
+| geetha |    7 |   23 |
++--------+------+------+
+3 rows in set (0.00 sec)
+mysql> select *from ply;
++--------+------+------+
+| name   | roll | age  |
++--------+------+------+
+| raj    |    4 |   20 |
+| geetha |    7 |   23 |
+| latha  |    9 |   23 |
+| priya  |   12 |   19 |
++--------+------+------+
+4 rows in set (0.00 sec)
+
+mysql> savepoint f;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> delete from ply where roll=9;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> rollback to savepoint f;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select *from ply;
++--------+------+------+
+| name   | roll | age  |
++--------+------+------+
+| raj    |    4 |   20 |
+| geetha |    7 |   23 |
+| latha  |    9 |   23 |
+| priya  |   12 |   19 |
++--------+------+------+
+4 rows in set (0.00 sec)

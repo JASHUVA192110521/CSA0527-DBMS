@@ -1,0 +1,43 @@
+ create table ord(name varchar(20),id int primary key,ord_id int,foreign key (ord_id) references ord(id),ph_no int );
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc ord;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| name   | varchar(20) | YES  |     | NULL    |       |
+| id     | int         | NO   | PRI | NULL    |       |
+| ord_id | int         | YES  | MUL | NULL    |       |
+| ph_no  | int         | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)alter table ord add gender char(1) check (gender  in ('m' or 'f'));
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc ord;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| name   | varchar(20) | YES  |     | NULL    |       |
+| id     | int         | NO   | PRI | NULL    |       |
+| ord_id | int         | YES  | MUL | NULL    |       |
+| ph_no  | int         | YES  |     | NULL    |       |
+| gender | char(1)     | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+mysql> alter table ord add address varchar(20) unique;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc ord;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| name    | varchar(20) | YES  |     | NULL    |       |
+| id      | int         | NO   | PRI | NULL    |       |
+| ord_id  | int         | YES  | MUL | NULL    |       |
+| ph_no   | int         | YES  |     | NULL    |       |
+| gender  | char(1)     | YES  |     | NULL    |       |
+| address | varchar(20) | YES  | UNI | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)

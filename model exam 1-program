@@ -1,0 +1,76 @@
+mysql> select*from sailors;
++------+--------+--------+------+
+| sid  | sname  | rating | age  |
++------+--------+--------+------+
+| 1000 | rana   |      4 |   30 |
+| 1010 | charan |      5 |   32 |
+| 1111 | raj    |      4 |   35 |
+| 1090 | bob    |      4 |   37 |
+| 1200 | jon    |      4 |   26 |
++------+--------+--------+------+
+5 rows in set (0.00 sec)
+
+mysql> select*from boat;
++------+---------+--------------------+
+| bid  | bname   | color              |
++------+---------+--------------------+
+|  101 | wizard  | skyblue            |
+|  119 | warrior | red                |
+| 1111 | ghazi   | brown              |
+| 1000 | 101     | friday(22/12/2022) |
+| 1010 | italian | green              |
++------+---------+--------------------+
+5 rows in set (0.00 sec)
+
+mysql> select*from reserves;
++------+------+---------------------+
+| sid  | bid  | day_date            |
++------+------+---------------------+
+| 1000 |  101 | friday(22/12/2022)  |
+| 1010 |  101 | monday(25/12/2022)  |
+| 1090 | 1111 | green               |
+| 1111 |  119 | tuesday(26/12/2022) |
+| 1010 |  101 | friday(22/12/2022)  |
++------+------+---------------------+
+5 rows in set (0.00 sec)
+
+
+
+mysql> select sname,bname,day_date from sailors a join reserves c join boat b where a.sid=c.sid and b.bid=c.bid and c.bid=101;
++--------+--------+--------------------+
+| sname  | bname  | day_date           |
++--------+--------+--------------------+
+| charan | wizard | monday(25/12/2022) |
+| charan | wizard | friday(22/12/2022) |
+| rana   | wizard | friday(22/12/2022) |
++--------+--------+--------------------+
+3 rows in set (0.00 sec)
+
+mysql> select sname,bname,age from sailors a join reserves c join boat b where a.sid=c.sid and b.bid=c.bid;
++--------+---------+------+
+| sname  | bname   | age  |
++--------+---------+------+
+| charan | wizard  |   32 |
+| charan | wizard  |   32 |
+| rana   | wizard  |   30 |
+| raj    | warrior |   35 |
+| bob    | ghazi   |   37 |
++--------+---------+------+
+5 rows in set (0.00 sec)
+
+mysql> select sname,bname,color,day_date,rating,age from sailors a join reserves c join boat b where a.sid=c.sid and b.bid=c.bid and color like 'red%';
++-------+---------+-------+---------------------+--------+------+
+| sname | bname   | color | day_date            | rating | age  |
++-------+---------+-------+---------------------+--------+------+
+| raj   | warrior | red   | tuesday(26/12/2022) |      4 |   35 |
++-------+---------+-------+---------------------+--------+------+
+1 row in set (0.00 sec)
+
+
+mysql> select sname,bname,color from sailors a join reserves c join boat b where a.sid=c.sid and b.bid=c.bid and sname like 'bob%';
++-------+-------+-------+
+| sname | bname | color |
++-------+-------+-------+
+| bob   | ghazi | brown |
++-------+-------+-------+
+1 row in set (0.00 sec)

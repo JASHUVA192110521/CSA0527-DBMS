@@ -1,0 +1,79 @@
+mysql> select*from sailors;
++------+--------+--------+------+
+| sid  | sname  | rating | age  |
++------+--------+--------+------+
+| 1000 | rana   |      4 |   30 |
+| 1010 | charan |      5 |   32 |
+| 1111 | raj    |      4 |   35 |
+| 1090 | bob    |      4 |   37 |
+| 1200 | jon    |      4 |   26 |
++------+--------+--------+------+
+5 rows in set (0.00 sec)
+
+mysql> select*from boat;
++------+---------+--------------------+
+| bid  | bname   | color              |
++------+---------+--------------------+
+|  101 | wizard  | skyblue            |
+|  119 | warrior | red                |
+| 1111 | ghazi   | brown              |
+| 1000 | 101     | friday(22/12/2022) |
+| 1010 | italian | green              |
++------+---------+--------------------+
+5 rows in set (0.00 sec)
+
+mysql> select*from reserves;
++------+------+---------------------+
+| sid  | bid  | day_date            |
++------+------+---------------------+
+| 1000 |  101 | friday(22/12/2022)  |
+| 1010 |  101 | monday(25/12/2022)  |
+| 1090 | 1111 | green               |
+| 1111 |  119 | tuesday(26/12/2022) |
+| 1010 |  101 | friday(22/12/2022)  |
++------+------+---------------------+
+5 rows in set (0.00 sec)
+
+
+
+
+
+mysql>  select sname ,day_date from  sailors a join reserves b where a.sid=b.sid and day_date like 'f%';
++--------+--------------------+
+| sname  | day_date           |
++--------+--------------------+
+| rana   | friday(22/12/2022) |
+| charan | friday(22/12/2022) |
++--------+--------------------+
+2 rows in set (0.00 sec)
+
+
+
+mysql> select bname,bid,color from boat where color='red' or color= 'green';
++---------+------+-------+
+| bname   | bid  | color |
++---------+------+-------+
+| warrior |  119 | red   |
+| italian | 1010 | green |
++---------+------+-------+
+2 rows in set (0.00 sec)
+
+
+
+
+mysql> select count(sname) from sailors;
++--------------+
+| count(sname) |
++--------------+
+|            5 |
++--------------+
+1 row in set (0.00 sec)
+
+
+mysql> select sname,age from sailors where age in (select max(age) from sailors);
++-------+------+
+| sname | age  |
++-------+------+
+| bob   |   37 |
++-------+------+
+1 row in set (0.00 sec)
